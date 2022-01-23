@@ -1,0 +1,30 @@
+@import "node_modules/bootstrap/scss/bootstrap-reboot.scss"; 
+
+@font-face {
+    font-family: Manrope;
+    src: url(dist/fonts/Manrope/Manrope-Regular.ttf) format("ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url(dist/fonts/Manrope/Manrope-Bold.ttf) format("ttf");
+    font-weight: 700;
+}
+
+body {
+	font-family: "Manrope", sans-serif;
+	font-size: 16px;
+	line-height: 1.65;
+    font-weight: 400;
+	color: #000000;
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 36px;
+	line-height: 1.65;
+    font-weight: 700;
+}
