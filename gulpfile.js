@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify')
 const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
 const imagemin = require('gulp-imagemin')
+const newer = require('gulp-newer')
 const autoprefixer = require('gulp-autoprefixer')
 
 const paths = {
@@ -34,7 +35,7 @@ const paths = {
 }
 
 function clean() {
-    return del(['dist'])
+    return del(['dist/*', '!dist/img'])
 }
 
 function styles() {
@@ -71,6 +72,7 @@ function scripts() {
 
 function img() {
     return gulp.src(paths.img.src)
+    .pipe(newer(paths.img.dest))
     .pipe(imagemin({
         progressive: true,
     }))
