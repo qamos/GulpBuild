@@ -16,7 +16,7 @@
 
 :root {
 	--accent: orange;
-	--text: #333;
+	--text: #7F8B89;
 	--regular-text: 16px;
 	--lineheight: 1.65;
 	--userfont: "Manrope", OpenSans;
@@ -43,11 +43,23 @@ html, body {
 	height: 100%;
 }
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+.main {
+	flex: 1 0 auto;
+}
+.footer {
+	flex: 0 0 auto;
+}
+
 
 .container {
-	max-width: 1440px;
+	max-width: 1604px;
 	margin: 0 auto;
-	padding: 0 70px;
+	padding: 0 20px;
 	@media (max-width: 1440px) {
 		max-width: 1280px;
 	}
