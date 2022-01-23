@@ -10,6 +10,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const imagemin = require('gulp-imagemin')
 const newer = require('gulp-newer')
 const autoprefixer = require('gulp-autoprefixer')
+const browserSync = require('browser-sync').create()
 
 const paths = {
     styles: {
@@ -56,6 +57,7 @@ function styles() {
         }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styles.dest))
+        .pipe(browserSync.stream())
 }
 
 function scripts() {
@@ -68,6 +70,7 @@ function scripts() {
     .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(browserSync.stream())
 }
 
 function img() {
@@ -87,9 +90,16 @@ function fonts() {
 function html() {
     return gulp.src(paths.html.src)
     .pipe(gulp.dest(paths.html.dest))
+    .pipe(browserSync.stream());
 }
 
 function watch() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/"
+        }
+    })
+    gulp.watch(paths.html.src).on('change', browserSync.reload)
     gulp.watch(paths.styles.src, styles)
     gulp.watch(paths.scripts.src, scripts)
     gulp.watch(paths.img.src, img)
